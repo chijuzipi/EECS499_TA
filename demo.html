@@ -17,33 +17,36 @@
 
     <!-- Annotator's styling and images -->
     <link rel="stylesheet" type="text/css" href="pkg/annotator.min.css">
-
-    <!-- The following plugins are entirely optional -->
-
-    <!-- The Store plugin. Saves annotations to a remote backend -->
-    <script src="pkg/annotator.store.min.js"></script>
-
-    <!-- The Auth plugin. Allows users of Annotator to authenticate themselves
-         to the remote backend -->
-    <script src="pkg/annotator.auth.min.js"></script>
-
-    <!-- The Permissions plugin. See who created which annotation and create
+    
+    <!--The Permissions plugin. See who created which annotation and create
          annotations as a specified user -->
-    <script src="pkg/annotator.permissions.min.js"></script>
-
-    <!-- The Tags plugin. Edit and display tag keywords on annotations -->
+    <script src="pkg/annotator.permissions.test.js"></script>
+    
+    <!--The Tags plugin. Edit and display tag keywords on annotations-->
     <script src="pkg/annotator.tags.min.js"></script>
 
-    <!-- The Markdown plugin. Treat annotation text as Markdown -->
+    <!-- The following plugins are entirely optional 
+
+    The Store plugin. Saves annotations to a remote backend 
+    <script src="pkg/annotator.store.min.js"></script>
+
+    The Auth plugin. Allows users of Annotator to authenticate themselves
+         to the remote backend 
+    <script src="pkg/annotator.auth.min.js"></script>
+
+    The Permissions plugin. See who created which annotation and create
+         annotations as a specified user 
+    <script src="pkg/annotator.permissions.min.js"></script>
+
+
+    The Markdown plugin. Treat annotation text as Markdown 
     <script src="lib/vendor/showdown.js"></script>
-    <script src="pkg/annotator.markdown.min.js"></script>
+    <script src="pkg/annotator.markdown.min.js"></script> --> 
 
   </head>
 
   <body>
-    <header>
       <h1>Javascript annotation service test</h1>
-    </header>
 
     <div id="airlock">
       <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
@@ -72,10 +75,11 @@
       }
       </code></pre>
       </div>
+
     <div id="airlock2">
       <p><strong>Pellentesque habitant morbi tristique</strong> senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. <em>Aenean ultricies mi vitae est.</em> Mauris placerat eleifend leo. Quisque sit amet est et sapien ullamcorper pharetra. Vestibulum erat wisi, condimentum sed, <code>commodo vitae</code>, ornare sit amet, wisi. Aenean fermentum, elit eget tincidunt condimentum, eros ipsum rutrum orci, sagittis tempus lacus enim ac dui. <a href="#">Donec non enim</a> in turpis pulvinar facilisis. Ut felis.</p>
 
-      </div>
+    </div>
 
     <script>
       jQuery(function ($) {
@@ -86,12 +90,12 @@
         } else {
           // This is the important bit: how to create the annotator and add
           // plugins
-          $('#airlock2').annotator()
+          $("div, h1").annotator()
                        .annotator('addPlugin', 'Permissions')
-                       .annotator('addPlugin', 'Markdown')
                        .annotator('addPlugin', 'Tags');
+                       //.annotator('addPlugin', 'Markdown')
 
-          $('#airlock2').data('annotator').plugins['Permissions'].setUser("Joe Bloggs");
+          $("div, h1").data('annotator').plugins['Permissions'].setUser("Joe Bloggs");
         }
       });
     </script>

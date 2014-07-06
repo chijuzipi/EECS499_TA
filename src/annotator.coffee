@@ -66,9 +66,9 @@ class Annotator extends Delegator
     # Return early if the annotator is not supported.
     return this unless Annotator.supported()
     this._setupDocumentEvents() unless @options.readOnly
-    this._setupWrapper()._setupViewer()._setupEditor()
-    this._setupDynamicStyle()
-
+    #this._setupWrapper()._setupViewer()._setupEditor()._setupDynamicStyle()
+    this._setupWrapper()._setupViewer()._setupDynamicStyle()
+    
     # Create adder
     this.adder = $(this.html.adder).appendTo(@wrapper).hide()
 
@@ -118,6 +118,7 @@ class Annotator extends Delegator
   # Appends this to the @wrapper and sets up event listeners.
   #
   # Returns itself for chaining.
+
   _setupEditor: ->
     @editor = new Annotator.Editor()
     @editor.hide()
@@ -134,6 +135,7 @@ class Annotator extends Delegator
 
     @editor.element.appendTo(@wrapper)
     this
+   
 
   # Sets up the selection event listeners to watch mouse actions on the document.
   #
@@ -477,20 +479,25 @@ class Annotator extends Delegator
   #   annotator.showEditor({text: "my comment"}, {top: 34, left: 234})
   #
   # Returns itself to allow chaining.
+
+  
   showEditor: (annotation, location) =>
     @editor.element.css(location)
     @editor.load(annotation)
     this.publish('annotationEditorShown', [@editor, annotation])
     this
+    
 
   # Callback method called when the @editor fires the "hide" event. Itself
   # publishes the 'annotationEditorHidden' event and resets the @ignoreMouseup
   # property to allow listening to mouse events.
   #
   # Returns nothing.
+  
   onEditorHide: =>
     this.publish('annotationEditorHidden', [@editor])
     @ignoreMouseup = false
+    
 
   # Callback method called when the @editor fires the "save" event. Itself
   # publishes the 'annotationEditorSubmit' event and creates/updates the
@@ -499,6 +506,7 @@ class Annotator extends Delegator
   # Returns nothing.
   onEditorSubmit: (annotation) =>
     this.publish('annotationEditorSubmit', [@editor, annotation])
+   
 
   # Public: Loads the @viewer with an Array of annotations and positions it
   # at the location provided. Calls the 'annotationViewerShown' event.

@@ -162,7 +162,8 @@ class Annotator.Plugin.Permissions extends Annotator.Plugin
     if @options.showViewPermissionsCheckbox == true
       @annotator.editor.addField({
         type:   'checkbox'
-        label:  Annotator._t('Allow anyone to <strong>view</strong> this annotation')
+        #label:  Annotator._t('Allow anyone to <strong>view</strong> this annotation')
+        label:  Annotator._t('Agree')
         load:   createCallback('updatePermissionsField', 'read')
         submit: createCallback('updateAnnotationPermissions', 'read')
       })
@@ -170,7 +171,8 @@ class Annotator.Plugin.Permissions extends Annotator.Plugin
     if @options.showEditPermissionsCheckbox == true
       @annotator.editor.addField({
         type:   'checkbox'
-        label:  Annotator._t('Allow anyone to <strong>edit</strong> this annotation')
+        #label:  Annotator._t('Allow anyone to <strong>edit</strong> this annotation')
+        label:  Annotator._t('Disagree')
         load:   createCallback('updatePermissionsField', 'update')
         submit: createCallback('updateAnnotationPermissions', 'update')
       })
